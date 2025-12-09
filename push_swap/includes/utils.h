@@ -6,7 +6,7 @@
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:28:01 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/09 18:28:50 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 19:32:22 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 # define UTILS_H
 
 
-void	print_stack(t_stacks *stacks);
+void	print_stack(t_stack *stack);
 
 #endif
