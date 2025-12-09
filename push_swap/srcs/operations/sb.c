@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 19:26:10 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/09 20:23:41 by nlallema         ###   ########lyon.fr   */
+/*   Created: 2025/12/09 19:23:46 by nlallema          #+#    #+#             */
+/*   Updated: 2025/12/09 20:24:33 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#include "push_swap.h"
+#include "operations.h"
 
-# include <stdio.h>
+void	sb(t_stack *stack)
+{
+	int	tmp;
 
-void	sa(t_stack *stack);
-void	sb(t_stack *stack);
-void	ss(t_stack *stack);
-void	pa(t_stack *stack);
-
-#endif
+	printf("sb\n");
+	if (stack->size_b <= 1)
+		return ;
+	tmp = stack->b[0];
+	stack->b[0] = stack->b[1];
+	stack->b[1] = tmp;
+}
