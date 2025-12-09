@@ -6,14 +6,14 @@
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:57:23 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/09 18:56:12 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 19:28:22 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	print_stack(t_stacks *stacks)
+void	print_stack(t_stack *stack)
 {
 	int	i;
 
@@ -21,14 +21,14 @@ void	print_stack(t_stacks *stacks)
 	printf("+-----------------------+\n");
 	printf("|      a    |     b     |\n");
 	printf("+-----------------------+\n");
-	while (++i < stacks->capacity)
+	while (++i < stack->capacity)
 	{
-		if (i < stacks->size_a)
-			printf("|%11d|", stacks->a[i]);
+		if (i < stack->size_a)
+			printf("|%11d|", stack->a[i]);
 		else
 			printf("|%11s|", " ");
-		if (i < stacks->size_b)
-			printf("%11d|", stacks->b[i]);
+		if (i < stack->size_b)
+			printf("%11d|", stack->b[i]);
 		else
 			printf("%11s|", " ");
 		printf("\n");
