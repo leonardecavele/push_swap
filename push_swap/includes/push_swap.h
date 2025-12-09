@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:44:16 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/09 17:09:48 by ldecavel         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:07:53 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ typedef enum e_operation
 	RRR,
 }	t_operation;
 
-typedef struct s_stack
+typedef struct s_stacks
 {
 	int	*a;
 	int	*b;
 	int	size;
-}		t_stack;
+}		t_stacks;
 
 typedef struct s_info
 {
