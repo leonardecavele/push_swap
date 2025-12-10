@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 13:06:22 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/10 23:16:02 by nlallema         ###   ########.fr       */
+/*   Updated: 2025/12/10 23:29:45 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 
 	parse(ac, av, &info, &stack);
 	if (info.flags & (BENCH | ADAPTIVE))
-		info.disorder = 100. - (_compute_disorder(&stack) * 100.);
+		info.disorder = _compute_disorder(&stack);
 	// choose and run algorithm
 	list_clear(&stack.a);
 	list_clear(&stack.b);
