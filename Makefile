@@ -16,12 +16,12 @@ SRCS =\
    srcs/operations/rotate.c\
    srcs/operations/swap.c\
    srcs/parser/parser.c\
-   srcs/utils/ft_atol.c\
-   srcs/utils/ft_dprintf.c\
-   srcs/utils/ft_isdigit.c\
-   srcs/utils/ft_isspace.c\
-   srcs/utils/ft_memset.c\
-   srcs/utils/ft_strcmp.c\
+   srcs/utils/libft/ft_atol.c\
+   srcs/utils/libft/ft_dprintf.c\
+   srcs/utils/libft/ft_isdigit.c\
+   srcs/utils/libft/ft_isspace.c\
+   srcs/utils/libft/ft_memset.c\
+   srcs/utils/libft/ft_strcmp.c\
    srcs/utils/linked_list/list_clear.c\
    srcs/utils/linked_list/list_pop.c\
    srcs/utils/linked_list/list_push.c\
