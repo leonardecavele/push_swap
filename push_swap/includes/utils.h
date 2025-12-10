@@ -24,6 +24,7 @@ typedef struct s_printf
 	int		current;
 }			t_printf;
 
-int	ft_printf(const char *s, ...) __attribute__((format(printf, 1, 2)));
+int		ft_printf(const char *s, ...) __attribute__((format(printf, 1, 2)));
+void	print_stack(t_stack *stack);
 
 #endif

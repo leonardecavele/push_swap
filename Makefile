@@ -1,30 +1,31 @@
 # structure
 NAME = push_swap
-BONUS_NAME = checker
-CC = cc
-INCDIR = includes
+BNAME = checker
 BUILD = build
 
 # flags
+CC = cc
 CFLAGS = -MMD -MP -Wall -Wextra -Werror -I $(INCDIR)
-MAKEFLAGS+= -j $$(nproc)
+MAKEFLAGS += -j $$(nproc)
 
 # files
-SRCS =\
+SRCS = main.c\
+BSRCS = main.c\
 
 OBJS = $(SRCS:%.c=$(BUILD)/%.o)
 DEPS = $(OBJS:.o=.d)
 
+VARS = INCDIR="$(NAME)/includes" SRCS="$(NAME)/$(SRCS)" NAME="$(NAME)"
+BVARS = INCDIR="$(BNAME)/includes" SRCS="$(BNAME)/$(BSRCS)" NAME="$(BNAME)"
+
 # rules
-all: $(NAME) $(BONUS_NAME)
-
-$(NAME):
+all $(NAME):
 	@mkdir -p $(BUILD)/$(NAME)
-	@$(MAKE) build --no-print-directory
+	@$(MAKE) $(VARS) build --no-print-directory
 
-$(BONUS_NAME):
-	@mkdir -p $(BUILD)/$(BONUS_NAME)
-	@$(MAKE) build SRCS="$(BSRCS)" NAME="$(BONUS_NAME)" --no-print-directory
+bonus $(BNAME):
+	@mkdir -p $(BUILD)/$(BNAME)
+	@$(MAKE) $(BVARS) build --no-print-directory
 
 build: $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
@@ -36,11 +37,11 @@ clean:
 	rm -rf $(BUILD)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BNAME)
 
 re: fclean
 	@$(MAKE) all --no-print-directory
 
 # miscellaneous
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus build clean fclean re
 -include $(DEPS)
