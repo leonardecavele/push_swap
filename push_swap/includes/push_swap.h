@@ -13,6 +13,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "linked_list.h"
+
 typedef enum e_flag
 {
 	SIMPLE = 1 << 0,
@@ -39,11 +41,9 @@ typedef enum e_operation
 
 typedef struct s_stack
 {
-	int	*a;
-	int	*b;
-	int	capacity;
-	int	size_a;
-	int	size_b;
+	t_node	*a;
+	t_node	*b;
+	int		size;
 }		t_stack;
 
 typedef struct s_info
