@@ -25,4 +25,6 @@ typedef enum e_errcode
 	ERR_DUPLICATA,
 }	t_errcode;
 
+void	parse(size_t ac, char **av, t_info *info, t_stack *stack);
+
 #endif

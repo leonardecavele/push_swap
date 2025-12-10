@@ -13,6 +13,7 @@
 #ifndef OPERATIONS_H
 # define OPERATIONS_H
 
+# include <unistd.h>
 # include "push_swap.h"
 # include "utils.h"
 # include "linked_list.h"

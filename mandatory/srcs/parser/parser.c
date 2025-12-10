@@ -14,6 +14,7 @@
 #include "parser.h"
 #include "utils.h"
 #include "linked_list.h"
+#include <limits.h>
 
 static void	handle_error(int errcode, t_stack *stack, t_node **table)
 {
@@ -42,12 +43,12 @@ static int	has_duplicata(int value, t_node **table)
 			return (ERR_DUPLICATA);
 		current = current->next;
 	}
-	if (!table[index] && !list_push_new(value, &table[index]))
+	if (!list_push_new(value, &table[index]))
 		return (ERR_ALLOC);
 	return (NOERR);
 }
 
-static void	parse_stack(char *s, t_info *info, t_stack *stack, t_node **table)
+static void	parse_stack(char *s, t_stack *stack, t_node **table)
 {
 	size_t	i;
 	long	value;
@@ -56,11 +57,13 @@ static void	parse_stack(char *s, t_info *info, t_stack *stack, t_node **table)
 	i = -1;
 	while (s[++i])
 	{
-		while (s[i] && is_space(s[i]))
+		while (s[i] && ft_isspace(s[i]))
 			i++;
 		if (!ft_isdigit(s[i]))
 			handle_error(ERR_STRING, stack, table);
 		value = ft_atol(&s[i]);
+		while (s[i + 1] && ft_isdigit(s[i]))
+			i++;
 		if (value < INT_MIN || value > INT_MAX)
 			handle_error(ERR_NOT_INT, stack, table);
 		if (!list_push_new(value, &stack->a))
@@ -74,18 +77,14 @@ static void	parse_stack(char *s, t_info *info, t_stack *stack, t_node **table)
 
 static bool	parse_strategy(char *s, t_info *info)
 {
-	if (!ft_strcmp(s, "--simple"))
-		if ((info->flags & 15) == 0)
-			info->flags |= SIMPLE;
-	else if (!ft_strcmp(s, "--medium"))
-		if ((info->flags & 15) == 0)
-			info->flags |= MEDIUM;
-	else if (!ft_strcmp(s, "--complex"))
-		if ((info->flags & 15) == 0)
-			info->flags |= COMPLEX;
-	else if (!ft_strcmp(s, "--adaptive"))
-		if ((!info->flags & 15))
-			info->flags |= ADAPTIVE;
+	if (!ft_strcmp(s, "--simple") && (info->flags & 15) == 0)
+		info->flags |= SIMPLE;
+	else if (!ft_strcmp(s, "--medium") && (info->flags & 15) == 0)
+		info->flags |= MEDIUM;
+	else if (!ft_strcmp(s, "--complex") && (info->flags & 15) == 0)
+		info->flags |= COMPLEX;
+	else if (!ft_strcmp(s, "--adaptive") && (info->flags & 15) == 0)
+		info->flags |= ADAPTIVE;
 	else if (!ft_strcmp(s, "--bench"))
 		info->flags |= BENCH;
 	else
@@ -93,20 +92,20 @@ static bool	parse_strategy(char *s, t_info *info)
 	return (true);
 }
 
-extern void	parse(int ac, char **av, t_info *info, t_stack *stack)
+extern void	parse(size_t ac, char **av, t_info *info, t_stack *stack)
 {
 	t_node		*table[HASH_SIZE];
 	size_t		i;
 
 	if (ac < 2)
 		handle_error(ERR_AC, stack, table);
-	ft_memset(table, 0, sizeof(t_table));
+	ft_memset(table, 0, sizeof(table));
 	*info = (t_info){0};
 	*stack = (t_stack){0};
 	i = 0;
 	while (++i < ac)
 		if (parse_strategy(av[i], info) == false)
-			parse_stack(av[i], info, stack, table);
+			parse_stack(av[i], stack, table);
 	if ((info->flags & 15) == 0)
 		info->flags |= ADAPTIVE;
 	i = 0;

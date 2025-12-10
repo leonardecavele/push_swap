@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 16:31:30 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/10 18:14:43 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 18:14:35 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-extern void	ra(t_stack *stack)
+extern void	rra(t_stack *stack)
 {
-	ft_dprintf(stdout, "ra\n");
+	ft_dprintf(STDOUT_FILENO, "rra\n");
 	if (stack->a != NULL)
-		stack->a = stack->a->next;
+		stack->a = stack->a->previous;
 }
 
-extern void	rb(t_stack *stack)
+extern void	rrb(t_stack *stack)
 {
-	ft_dprintf(stdout, "rb\n");
+	ft_dprintf(STDOUT_FILENO, "rrb\n");
 	if (stack->b != NULL)
-		stack->b = stack->b->next;
+		stack->b = stack->b->previous;
 }
 
-extern void	rr(t_stack *stack)
+extern void	rrr(t_stack *stack)
 {
-	ft_dprintf(stdout, "rr\n");
+	ft_dprintf(STDOUT_FILENO, "rrr\n");
 	if (stack->a != NULL)
-		stack->a = stack->a->next;
+		stack->a = stack->a->previous;
 	if (stack->b != NULL)
-		stack->b = stack->b->next;
+		stack->b = stack->b->previous;
 }

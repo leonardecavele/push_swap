@@ -5,18 +5,37 @@ BUILD = build
 
 # flags
 CC = cc
-CFLAGS = -MMD -MP -Wall -Wextra -Werror -I $(INCDIR)
+CFLAGS = -MMD -MP -Wall -Wextra -Werror -I $(INCDIR) -g3
 MAKEFLAGS += -j $$(nproc)
 
 # files
-SRCS = main.c\
+SRCS =\
+   srcs/main.c\
+   srcs/operations/push.c\
+   srcs/operations/reverse_rotate.c\
+   srcs/operations/rotate.c\
+   srcs/operations/swap.c\
+   srcs/parser/parser.c\
+   srcs/utils/ft_atol.c\
+   srcs/utils/ft_dprintf.c\
+   srcs/utils/ft_isdigit.c\
+   srcs/utils/ft_isspace.c\
+   srcs/utils/ft_memset.c\
+   srcs/utils/ft_strcmp.c\
+   srcs/utils/linked_list/list_clear.c\
+   srcs/utils/linked_list/list_pop.c\
+   srcs/utils/linked_list/list_push.c\
+   srcs/utils/linked_list/list_push_new.c\
+   srcs/utils/linked_list/node_new.c\
+   debug.c
+
 BSRCS = main.c\
 
 OBJS = $(SRCS:%.c=$(BUILD)/%.o)
 DEPS = $(OBJS:.o=.d)
 
-VARS = INCDIR="$(NAME)/includes" SRCS="$(NAME)/$(SRCS)" NAME="$(NAME)"
-BVARS = INCDIR="$(BNAME)/includes" SRCS="$(BNAME)/$(BSRCS)" NAME="$(BNAME)"
+VARS = INCDIR="mandatory/includes" SRCS="$(addprefix mandatory/, $(SRCS))" NAME="$(NAME)"
+BVARS = INCDIR="bonus/includes" SRCS="$(addprefix bonus/, $(BSRCS))" NAME="$(BNAME)"
 
 # rules
 all $(NAME):
@@ -31,6 +50,7 @@ build: $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
 
 $(BUILD)/%.o: %.c
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
