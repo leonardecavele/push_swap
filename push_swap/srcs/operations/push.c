@@ -6,18 +6,19 @@
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:46:09 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/10 10:31:34 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 10:47:47 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "utils.h"
 #include "operations.h"
 
 void	pa(t_stack *stack)
 {
 	int	i;
 
-	printf("pa\n");
+	ft_printf("pa\n");
 	if (stack->size_b == 0)
 		return ;
 	i = stack->size_a;
@@ -35,7 +36,7 @@ void	pb(t_stack *stack)
 {
 	int	i;
 
-	printf("pb\n");
+	ft_printf("pb\n");
 	if (stack->size_a == 0)
 		return ;
 	i = stack->size_b;
