@@ -12,11 +12,11 @@ MAKEFLAGS += -j $$(nproc)
 SRCS =\
    srcs/main.c\
    srcs/bench.c\
+   srcs/parser.c\
    srcs/operations/push.c\
    srcs/operations/reverse_rotate.c\
    srcs/operations/rotate.c\
    srcs/operations/swap.c\
-   srcs/parser/parser.c\
    srcs/utils/libft/ft_atol.c\
    srcs/utils/libft/ft_dprintf.c\
    srcs/utils/libft/ft_isdigit.c\
