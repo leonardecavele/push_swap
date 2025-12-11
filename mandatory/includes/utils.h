@@ -29,6 +29,7 @@ typedef struct s_dprintf
 int		ft_dprintf(int fd, const char *s, ...);
 long	ft_atol(const char *s);
 bool	ft_isdigit(int c);
+bool	ft_issign(int c);
 bool	ft_isspace(int c);
 int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memset(void *s, int c, size_t n);

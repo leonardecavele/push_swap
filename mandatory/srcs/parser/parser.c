@@ -61,11 +61,12 @@ static void	parse_stack(char *s, t_stack *stack, t_node **table)
 	{
 		while (s[i] && ft_isspace(s[i]))
 			i++;
-		if (!ft_isdigit(s[i])
-			&& !(ft_isdigit(s[i + 1]) && (s[i] == '-' || s[i] == '+')))
+		if (!s[i])
+			break ;
+		if (!ft_isdigit(s[i]) && !(ft_isdigit(s[i + 1]) && ft_issign(s[i])))
 			handle_error(ERR_STRING, stack, table);
 		value = ft_atol(&s[i]);
-		while (s[i + 1] && (s[i] == '-' || s[i] == '+' || ft_isdigit(s[i])))
+		while (s[i + 1] && (ft_issign(s[i]) || ft_isdigit(s[i])))
 			i++;
 		if (value < INT_MIN || value > INT_MAX)
 			handle_error(ERR_NOT_INT, stack, table);
@@ -80,13 +81,17 @@ static void	parse_stack(char *s, t_stack *stack, t_node **table)
 
 static bool	parse_strategy(char *s, t_info *info)
 {
-	if (!ft_strcmp(s, "--simple") && (info->flags & 15) == 0)
+	if ((!ft_strcmp(s, "--simple") && (info->flags & 15) == 0)
+		|| (!ft_strcmp(s, "--simple") && info->flags & SIMPLE))
 		info->flags |= SIMPLE;
-	else if (!ft_strcmp(s, "--medium") && (info->flags & 15) == 0)
+	else if ((!ft_strcmp(s, "--medium") && (info->flags & 15) == 0)
+		|| (!ft_strcmp(s, "--medium") && info->flags & MEDIUM))
 		info->flags |= MEDIUM;
-	else if (!ft_strcmp(s, "--complex") && (info->flags & 15) == 0)
+	else if ((!ft_strcmp(s, "--complex") && (info->flags & 15) == 0)
+		|| (!ft_strcmp(s, "--complex") && info->flags & COMPLEX))
 		info->flags |= COMPLEX;
-	else if (!ft_strcmp(s, "--adaptive") && (info->flags & 15) == 0)
+	else if ((!ft_strcmp(s, "--adaptive") && (info->flags & 15) == 0)
+		|| (!ft_strcmp(s, "--adaptive") && info->flags & ADAPTIVE))
 		info->flags |= ADAPTIVE;
 	else if (!ft_strcmp(s, "--bench"))
 		info->flags |= BENCH;

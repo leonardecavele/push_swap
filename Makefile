@@ -20,6 +20,7 @@ SRCS =\
    srcs/utils/libft/ft_atol.c\
    srcs/utils/libft/ft_dprintf.c\
    srcs/utils/libft/ft_isdigit.c\
+   srcs/utils/libft/ft_issign.c\
    srcs/utils/libft/ft_isspace.c\
    srcs/utils/libft/ft_memset.c\
    srcs/utils/libft/ft_strcmp.c\
