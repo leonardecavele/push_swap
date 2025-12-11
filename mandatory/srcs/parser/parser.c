@@ -61,11 +61,12 @@ static void	parse_stack(char *s, t_stack *stack, t_node **table)
 	{
 		while (s[i] && ft_isspace(s[i]))
 			i++;
-		if (!ft_isdigit(s[i])
-			&& !(ft_isdigit(s[i + 1]) && (s[i] == '-' || s[i] == '+')))
+		if (!s[i])
+			break ;
+		if (!ft_isdigit(s[i]) && !(ft_isdigit(s[i + 1]) && ft_issign(s[i])))
 			handle_error(ERR_STRING, stack, table);
 		value = ft_atol(&s[i]);
-		while (s[i + 1] && (s[i] == '-' || s[i] == '+' || ft_isdigit(s[i])))
+		while (s[i + 1] && (ft_issign(s[i]) || ft_isdigit(s[i])))
 			i++;
 		if (value < INT_MIN || value > INT_MAX)
 			handle_error(ERR_NOT_INT, stack, table);
