@@ -17,6 +17,9 @@ SRCS =\
    srcs/operations/reverse_rotate.c\
    srcs/operations/rotate.c\
    srcs/operations/swap.c\
+   srcs/algorithms/simple.c\
+   srcs/algorithms/medium.c\
+   srcs/algorithms/complex.c\
    srcs/utils/libft/ft_atol.c\
    srcs/utils/libft/ft_dprintf.c\
    srcs/utils/libft/ft_isdigit.c\
