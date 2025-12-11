@@ -29,7 +29,7 @@ static void	adapt_complexity(t_info *info)
 		info->flags |= COMPLEX;
 }
 
-static double	_compute_disorder(t_stack *stack)
+static double	compute_disorder(t_stack *stack)
 {
 	double	mistakes;
 	double	total_pairs;

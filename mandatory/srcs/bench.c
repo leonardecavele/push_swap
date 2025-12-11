@@ -12,7 +12,7 @@
 
 #include "bench.h"
 
-static void	_print_disorder(t_info info)
+static void	print_disorder(t_info info)
 {
 	double	disorder;
 	int		decimal;
@@ -25,7 +25,7 @@ static void	_print_disorder(t_info info)
 	ft_dprintf(2, "%d%%\n", decimal);
 }
 
-static void	_print_strategy(t_info info)
+static void	print_strategy(t_info info)
 {
 	ft_dprintf(2, "[bench] strategy: ");
 	if (info.flags & ADAPTIVE && info.flags & SIMPLE)
@@ -43,7 +43,7 @@ static void	_print_strategy(t_info info)
 	ft_dprintf(2, "\n");
 }
 
-static void	_print_operation_count(t_info info)
+static void	print_operation_count(t_info info)
 {
 	ft_dprintf(2, "[bench] total_ops: %d\n", info.total_count);
 	ft_dprintf(2, "[bench] sa: %d ", info.operation_count[SA]);
