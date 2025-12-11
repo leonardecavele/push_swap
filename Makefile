@@ -11,6 +11,7 @@ MAKEFLAGS += -j $$(nproc)
 # files
 SRCS =\
    srcs/main.c\
+   srcs/bench.c\
    srcs/operations/push.c\
    srcs/operations/reverse_rotate.c\
    srcs/operations/rotate.c\

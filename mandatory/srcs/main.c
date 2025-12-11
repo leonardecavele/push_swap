@@ -6,12 +6,15 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 13:06:22 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/10 23:29:45 by nlallema         ###   ########.fr       */
+/*   Updated: 2025/12/11 11:53:06 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "parser.h"
+
+#include "utils.h"
+#include "bench.h"
 
 #include "operations.h" // to remove
 #include "debug.h" // to remove
@@ -54,6 +57,8 @@ int	main(int ac, char **av)
 	if (info.flags & (BENCH | ADAPTIVE))
 		info.disorder = _compute_disorder(&stack);
 	// choose and run algorithm
+	if (info.flags & BENCH)
+		bench(stack, info);
 	list_clear(&stack.a);
 	list_clear(&stack.b);
 	return (0);
