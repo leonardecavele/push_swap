@@ -15,6 +15,10 @@
 
 # include "push_swap.h"
 # include "operations.h"
+# include <limits.h>
+
+# define LEFT	0
+# define RIGHT	1
 
 void	simple(t_stack *stack, t_info *info);
 void	medium(t_stack *stack, t_info *info);

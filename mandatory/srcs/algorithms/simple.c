@@ -9,71 +9,33 @@
 
 #include "algorithms.h"
 
-#include "debug.h" // to remove
-#include <limits.h> // to remove
-
-#define LEFT	0
-#define RIGHT	1
-
-static void	target_min(t_node *stack_a, int size_a, t_node **target, bool *direction)
+static void	target_min(t_stack *stack, t_node **target, bool *direction)
 {
 	t_node	*current;
 	long	min;
+	int		min_i;
 	int		i;
-	int		min_index;
 
-	min = (long)INT_MAX + 1;
-	min_index = 0;
+	min = LONG_MAX;
+	min_i = 0;
 	i = 0;
-	current = stack_a;
-	while (current)
+	current = stack->a;
+	while (current != stack->a || i == 0)
 	{
 		if ((long)current->value < min)
 		{
-			min_index = i;
+			min_i = i;
 			min = current->value;
 			*target = current;
 		}
 		current = current->next;
 		i++;
-		if (current == stack_a)
-			break ;
 	}
-	if (size_a - min_index > min_index)
+	if (stack->size_a - min_i > min_i)
 		*direction = RIGHT;
 	else
 		*direction = LEFT;
 }
-
-//static void	target_max(t_node *stack_a, int size_a, t_node **target, bool *direction)
-//{
-//	t_node	*current;
-//	int		max;
-//	int		i;
-//	int		max_index;
-//
-//	max = 0;
-//	max_index = 0;
-//	i = 0;
-//	current = stack_a;
-//	while (current)
-//	{
-//		if (current->value > max)
-//		{
-//			max_index = i;
-//			max = current->value;
-//			*target = current;
-//		}
-//		current = current->next;
-//		i++;
-//		if (current == stack_a)
-//			break ;
-//	}
-//	if (size_a - max_index > max_index)
-//		*direction = RIGHT;
-//	else
-//		*direction = LEFT;
-//}
 
 extern void	simple(t_stack *stack, t_info *info)
 {
@@ -82,20 +44,15 @@ extern void	simple(t_stack *stack, t_info *info)
 	bool	direction;
 
 	current = stack->a;
-	int	i = 0;
 	while (stack->size_a)
 	{
-		target_min(stack->a, stack->size_a, &target, &direction);
+		target_min(stack, &target, &direction);
 		while (stack->a != target)
 			if (direction == RIGHT)
 				ra(stack, info);
 			else if (direction == LEFT)
 				rra(stack, info);
 		pb(stack, info);
-		i++;
-		if (!stack->size_a)
-			break ;
-		i++;
 	}
 	while (stack->b)
 		pa(stack, info);
