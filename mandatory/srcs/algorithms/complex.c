@@ -14,4 +14,6 @@
 
 extern void	complex(t_stack *stack, t_info *info)
 {
+	(void)stack;
+	(void)info;
 }

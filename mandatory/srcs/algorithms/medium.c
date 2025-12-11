@@ -14,4 +14,6 @@
 
 extern void	medium(t_stack *stack, t_info *info)
 {
+	(void)stack;
+	(void)info;
 }
