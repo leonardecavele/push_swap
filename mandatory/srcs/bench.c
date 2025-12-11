@@ -61,7 +61,7 @@ static void	print_operation_count(t_info info)
 
 extern void	bench(t_info info)
 {
-	_print_disorder(info);
-	_print_strategy(info);
-	_print_operation_count(info);
+	print_disorder(info);
+	print_strategy(info);
+	print_operation_count(info);
 }

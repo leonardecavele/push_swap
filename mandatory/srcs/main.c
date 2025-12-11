@@ -65,7 +65,7 @@ int	main(int ac, char **av)
 
 	parse(ac, av, &info, &stack);
 	if (info.flags & (BENCH | ADAPTIVE))
-		info.disorder = _compute_disorder(&stack);
+		info.disorder = compute_disorder(&stack);
 	if (info.flags & ADAPTIVE)
 		adapt_complexity(&info);
 	// choose and run algorithm
