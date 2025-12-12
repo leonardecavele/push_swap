@@ -13,8 +13,11 @@
 #include "push_swap.h" // maybe some of them are useless
 #include "operations.h"
 #include "checker.h"
-#include "parser.h"
+#include "parse_input.h"
+#include "parse_stdin.h"
 #include "utils.h"
+
+#include <limits.h> // vraiment on doit ranger
 
 static bool	is_sorted(t_stack *stack)
 {
@@ -39,8 +42,8 @@ static bool	is_sorted(t_stack *stack)
 
 static void run_instructions(t_stack *stack, t_info *info, t_node *instructions)
 {
-	t_node				*start;
-	static t_operation	operations[] = {
+	t_node						*start;
+	static t_operation_function	operations[] = {
 		sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 	};
 
@@ -63,9 +66,9 @@ int	main(int ac, char **av)
 
 	parse_input(ac, av, &info, &stack);
 	parse_stdin(&instructions, &stack);
-	run_instructions(stack, info, instructions);
+	run_instructions(&stack, &info, instructions);
 	list_clear(&instructions);
-	if (is_sorted(stack))
+	if (is_sorted(&stack))
 	{
 		ft_dprintf(1, "OK\n");
 		return_value = 0;

@@ -13,8 +13,8 @@
 #include "push_swap.h" // maybe some of them are useless
 #include "operations.h"
 #include "checker.h"
-#include "parser.h"
 #include "utils.h"
+#include "parse_input.h" //pour les errcodes
 
 static void	handle_error(int errcode, t_stack *stack, t_node **instructions)
 {
@@ -24,7 +24,7 @@ static void	handle_error(int errcode, t_stack *stack, t_node **instructions)
 	exit(errcode);
 }
 
-static int	get_instruction(t_node **instructions, char buffer[BUFFER_SIZE])
+static int	get_instruction(char buffer[BUFFER_SIZE])
 {
 	if (!ft_strcmp("sa\n", buffer))
 		return (SA);
@@ -66,10 +66,10 @@ extern void	parse_stdin(t_node **instructions, t_stack *stack)
 		while (nread < BUFFER_SIZE)
 			buffer[nread++] = 0;
 		buffer[nread] = 0;
-		operation = get_instruction(instructions, buffer);
+		operation = get_instruction(buffer);
 		if (operation == NOP)
 			handle_error(ERR_INSTRUCTION, stack, instructions);
-		if (!list_push_back_new(value, instructions))
+		if (!list_push_back_new(operation, instructions))
 			handle_error(ERR_ALLOC, stack, instructions);
 	}
 }

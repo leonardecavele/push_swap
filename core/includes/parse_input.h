@@ -23,6 +23,7 @@ typedef enum e_errcode
 	ERR_STRING,
 	ERR_NOT_INT,
 	ERR_DUPLICATA,
+	ERR_INSTRUCTION
 }	t_errcode;
 
 void	parse_input(size_t ac, char **av, t_info *info, t_stack *stack);

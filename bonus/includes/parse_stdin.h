@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   parse_stdin.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 17:24:46 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/12 17:58:56 by ldecavel         ###   ########.fr       */
+/*   Created: 2025/12/12 19:15:21 by ldecavel          #+#    #+#             */
+/*   Updated: 2025/12/12 19:15:59 by ldecavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef PARSE_STDIN_H
+# define PARSE_STDIN_H
 
-# include <unistd.h>
-# include "push_swap.h"
-
-# define BUFFER_SIZE	4
-
-typedef void (*t_operation_function)(t_stack *, t_info *);
+void	parse_stdin(t_node **instructions, t_stack *stack);
 
 #endif

@@ -49,7 +49,7 @@ VARS = INCLUDES="-I$(MANDATORY_DIR)/includes -I$(CORE_DIR)/includes"\
 	   DEFINES="-DPARSE_STRATEGY=true"\
 	   NAME="$(NAME)"\
 
-BONUS_VARS = INCLUDES=-I$(BONUS_DIR)/includes -I$(CORE_DIR)/includes\
+BONUS_VARS = INCLUDES="-I$(BONUS_DIR)/includes -I$(CORE_DIR)/includes"\
 		MANDATORY_SRCS="$(addprefix $(BONUS_DIR)/srcs/, $(BONUS_SRCS)) \
 		$(addprefix $(CORE_DIR)/srcs/, $(CORE_SRCS))"\
 		DEFINES="-DPARSE_STRATEGY=false"\
@@ -62,7 +62,7 @@ all $(NAME) &:
 	@$(MAKE) $(VARS) $(NAME) --no-print-directory
 
 bonus $(BONUS_NAME) &:
-	@$(MAKE) $(BONUS_VARS) $(NAME) --no-print-directory
+	@$(MAKE) $(BONUS_VARS) $(BONUS_NAME) --no-print-directory
 
 clean:
 	rm -rf $(BUILD)
