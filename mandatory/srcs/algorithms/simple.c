@@ -42,11 +42,9 @@ static void	target_min(t_stack *stack, t_node **target, bool *direction)
 
 extern void	simple(t_stack *stack, t_info *info)
 {
-	t_node	*current;
 	t_node	*target;
 	bool	direction;
 
-	current = stack->a;
 	while (stack->size_a)
 	{
 		target_min(stack, &target, &direction);
