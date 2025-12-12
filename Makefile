@@ -38,6 +38,7 @@ CORE_SRCS =\
 	   utils/libft/ft_isspace.c\
 	   utils/libft/ft_memset.c\
 	   utils/libft/ft_strcmp.c\
+	   utils/libft/get_next_line.c\
 	   utils/linked_list/list_clear.c\
 	   utils/linked_list/list_pop.c\
 	   utils/linked_list/list_push.c\
@@ -48,14 +49,16 @@ DEPS = $(OBJS:.o=.d)
 
 VARS = INCLUDES="-I$(MANDATORY_DIR)/includes -I$(CORE_DIR)/includes"\
 	   MANDATORY_SRCS="$(addprefix $(MANDATORY_DIR)/srcs/, $(MANDATORY_SRCS)) \
-	   $(addprefix $(CORE_DIR)/srcs/, $(CORE_SRCS))"\
+	   $(addprefix $(MANDATORY_DIR)/$(CORE_DIR)/srcs/, $(CORE_SRCS))"\
 	   DEFINES="-DPARSE_STRATEGY=true -DPRINT_OPERATION=true"\
+	   DIR="$(MANDATORY_DIR)"\
 	   NAME="$(NAME)"\
 
 BONUS_VARS = INCLUDES="-I$(BONUS_DIR)/includes -I$(CORE_DIR)/includes"\
 		MANDATORY_SRCS="$(addprefix $(BONUS_DIR)/srcs/, $(BONUS_SRCS)) \
 		$(addprefix $(CORE_DIR)/srcs/, $(CORE_SRCS))"\
 		DEFINES="-DPARSE_STRATEGY=false -DPRINT_OPERATION=false"\
+		DIR="$(BONUS_DIR)"\
 		NAME="$(BONUS_NAME)"\
 
 # rules
@@ -79,6 +82,10 @@ else
 
 $(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
+
+$(BUILD)/$(DIR)/$(CORE_DIR)/%.o: $(CORE_DIR)/%.c
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/%.o: %.c
 	mkdir -p $(dir $@)

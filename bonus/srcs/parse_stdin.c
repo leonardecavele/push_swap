@@ -24,7 +24,7 @@ static void	handle_error(int errcode, t_stack *stack, t_node **instructions)
 	exit(errcode);
 }
 
-static int	get_instruction(char buffer[BUFFER_SIZE])
+static int	get_instruction(char *buffer)
 {
 	if (!ft_strcmp("sa\n", buffer))
 		return (SA);
@@ -54,20 +54,18 @@ static int	get_instruction(char buffer[BUFFER_SIZE])
 
 extern void	parse_stdin(t_node **instructions, t_stack *stack)
 {
-	int		nread;
-	char	buffer[BUFFER_SIZE];
+	char	*buffer;
 	int		operation;
 
 	operation = 0;
 	while (true)
 	{
-		nread = read(0, buffer, BUFFER_SIZE);
-		if (nread < 1)
+		if (!get_next_line(0, &buffer))
+			handle_error(ERR_ALLOC, stack, instructions);
+		if (buffer == NULL)
 			break ;
-		while (nread < BUFFER_SIZE)
-			buffer[nread++] = 0;
-		buffer[nread] = 0;
 		operation = get_instruction(buffer);
+		free(buffer);
 		if (operation == -1)
 			handle_error(ERR_INSTRUCTION, stack, instructions);
 		if (!list_push_back_new(operation, instructions))

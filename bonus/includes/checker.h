@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include "push_swap.h"
 
-# define BUFFER_SIZE	4
-
 typedef void (*t_operation_function)(t_stack *, t_info *);
 
 #endif

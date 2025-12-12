@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdbool.h>
+# include <stdlib.h>
 
 typedef struct s_dprintf
 {
@@ -26,6 +27,26 @@ typedef struct s_dprintf
 	int		current;
 }			t_dprintf;
 
+# define FD_MAX			1024
+# define BUFFER_SIZE	4096
+
+typedef struct s_rest
+{
+	char	b[BUFFER_SIZE];
+	size_t	len;
+	size_t	i;
+}			t_rest;
+
+typedef struct s_gnl
+{
+	char	*l;
+	char	*dup;
+	ssize_t	nread;
+	size_t	cur;
+	size_t	max;
+}			t_gnl;
+
+bool	get_next_line(int fd, char **s);
 int		ft_dprintf(int fd, const char *s, ...);
 long	ft_atol(const char *s);
 bool	ft_isdigit(int c);
