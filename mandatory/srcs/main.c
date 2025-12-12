@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 	t_info	info;
 	t_stack	stack;
 
-	parse(ac, av, &info, &stack);
+	parse_input(ac, av, &info, &stack);
 	if (info.flags & (BENCH | ADAPTIVE))
 		info.disorder = compute_disorder(&stack);
 	if (info.flags & ADAPTIVE)

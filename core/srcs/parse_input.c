@@ -105,7 +105,7 @@ static bool	parse_strategy(char *s, t_info *info)
 	return (true);
 }
 
-extern void	parse(size_t ac, char **av, t_info *info, t_stack *stack)
+extern void	parse_input(size_t ac, char **av, t_info *info, t_stack *stack)
 {
 	t_node		*table[HASH_SIZE];
 	size_t		i;

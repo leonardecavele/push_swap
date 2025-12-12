@@ -21,6 +21,7 @@ MANDATORY_SRCS =\
 
 BONUS_SRCS =\
 		main.c\
+		parse_stdin.c\
 
 CORE_SRCS =\
 	   operations/push.c\
@@ -37,7 +38,7 @@ CORE_SRCS =\
 	   utils/linked_list/list_clear.c\
 	   utils/linked_list/list_pop.c\
 	   utils/linked_list/list_push.c\
-	   parser.c\
+	   parse_input.c\
 
 OBJS = $(MANDATORY_SRCS:%.c=$(BUILD)/%.o)
 DEPS = $(OBJS:.o=.d)

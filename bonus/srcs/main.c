@@ -6,22 +6,76 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:17:19 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/12 14:17:21 by ldecavel         ###   ########.fr       */
+/*   Updated: 2025/12/12 18:49:31 by ldecavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.h" // maybe some of them are useless
+#include "operations.h"
+#include "checker.h"
 #include "parser.h"
 #include "utils.h"
+
+static bool	is_sorted(t_stack *stack)
+{
+	t_node	*start;
+	int		last_value;
+
+	if (stack->b)
+		return (false);
+	last_value = INT_MIN;
+	start = stack->a;
+	while (true)
+	{
+		if (last_value > stack->a->value)
+			return (false);
+		last_value = stack->a->value;
+		stack->a = stack->a->next;
+		if (stack->a == start)
+			break ;
+	}
+	return (true);
+}
+
+static void run_instructions(t_stack *stack, t_info *info, t_node *instructions)
+{
+	t_node				*start;
+	static t_operation	operations[] = {
+		sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
+	};
+
+	start = instructions;
+	while (true)
+	{
+		operations[instructions->value](stack, info);
+		instructions = instructions->next;
+		if (instructions == start)
+			break ;
+	}
+}
 
 int	main(int ac, char **av)
 {
 	t_info	info;
 	t_stack	stack;
+	t_node	*instructions;
+	int		return_value;
 
-	parse(ac, av, &info, &stack);
-
+	parse_input(ac, av, &info, &stack);
+	parse_stdin(&instructions, &stack);
+	run_instructions(stack, info, instructions);
+	list_clear(&instructions);
+	if (is_sorted(stack))
+	{
+		ft_dprintf(1, "OK\n");
+		return_value = 0;
+	}
+	else
+	{
+		ft_dprintf(1, "KO\n");
+		return_value = 1;
+	}
 	list_clear(&stack.a);
 	list_clear(&stack.b);
-	return (0);
+	return (return_value);
 }

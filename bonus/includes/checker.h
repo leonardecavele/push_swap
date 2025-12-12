@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 11:33:34 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/10 11:37:56 by ldecavel         ###   ########.fr       */
+/*   Created: 2025/12/12 17:24:46 by ldecavel          #+#    #+#             */
+/*   Updated: 2025/12/12 17:58:56 by ldecavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
-# define HASH_SIZE 0x10000
+# include <unistd.h>
+
+# define BUFFER_SIZE	4
+
+typedef void (*t_operation)(t_stack *, t_info *);
 
 typedef enum e_errcode
 {
-	NOERR,
-	ERR_AC,
-	ERR_STRING,
-	ERR_NOT_INT,
-	ERR_ALLOC,
-	ERR_DUPLICATA,
+	NOERR = 1,
+	ERR_INSTRUCTION = 2,
+	ERR_ALLOC = 3,
 }	t_errcode;
-
-void	parse(size_t ac, char **av, t_info *info, t_stack *stack);
 
 #endif

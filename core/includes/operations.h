@@ -18,6 +18,22 @@
 # include "utils.h"
 # include "linked_list.h"
 
+typedef enum e_operation
+{
+	NOP,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+}	t_operation;
+
 void	sa(t_stack *stack, t_info *info);
 void	sb(t_stack *stack, t_info *info);
 void	ss(t_stack *stack, t_info *info);

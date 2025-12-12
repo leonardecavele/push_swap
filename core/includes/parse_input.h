@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 16:44:16 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/11 16:41:39 by nlallema         ###   ########lyon.fr   */
+/*   Created: 2025/12/10 11:33:34 by ldecavel          #+#    #+#             */
+/*   Updated: 2025/12/10 11:37:56 by ldecavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# include "linked_list.h"
+# define HASH_SIZE 0x10000
 
-typedef enum e_flag
+typedef enum e_errcode
 {
-	SIMPLE = 1 << 0,
-	MEDIUM = 1 << 1,
-	COMPLEX = 1 << 2,
-	ADAPTIVE = 1 << 3,
-	BENCH = 1 << 4,
-}	t_flag;
+	NOERR,
+	ERR_AC,
+	ERR_ALLOC,
+	ERR_STRING,
+	ERR_NOT_INT,
+	ERR_DUPLICATA,
+}	t_errcode;
 
-typedef struct s_stack
-{
-	t_node	*a;
-	t_node	*b;
-	int		size;
-	int		size_a;
-	int		size_b;
-}		t_stack;
-
-typedef struct s_info
-{
-	int		operation_count[11];
-	double	disorder;
-	int		total_count;
-	short	flags;
-}			t_info;
+void	parse_input(size_t ac, char **av, t_info *info, t_stack *stack);
 
 #endif
