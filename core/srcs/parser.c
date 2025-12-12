@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:11:51 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/11 16:43:32 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 16:09:37 by ldecavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,24 @@ static void	parse_stack(char *s, t_stack *stack, t_node **table)
 
 static bool	parse_strategy(char *s, t_info *info)
 {
-	if ((!ft_strcmp(s, "--simple") && (info->flags & 15) == 0)
-		|| (!ft_strcmp(s, "--simple") && info->flags & SIMPLE))
+	if (((!ft_strcmp(s, "--simple") && (info->flags & 15) == 0)
+			|| (!ft_strcmp(s, "--simple") && info->flags & SIMPLE))
+		&& PARSE_STRATEGY == true)
 		info->flags |= SIMPLE;
-	else if ((!ft_strcmp(s, "--medium") && (info->flags & 15) == 0)
-		|| (!ft_strcmp(s, "--medium") && info->flags & MEDIUM))
+	else if (((!ft_strcmp(s, "--medium") && (info->flags & 15) == 0)
+			|| (!ft_strcmp(s, "--medium") && info->flags & MEDIUM))
+		&& PARSE_STRATEGY == true)
 		info->flags |= MEDIUM;
-	else if ((!ft_strcmp(s, "--complex") && (info->flags & 15) == 0)
-		|| (!ft_strcmp(s, "--complex") && info->flags & COMPLEX))
+	else if (((!ft_strcmp(s, "--complex") && (info->flags & 15) == 0)
+			|| (!ft_strcmp(s, "--complex") && info->flags & COMPLEX))
+		&& PARSE_STRATEGY == true)
 		info->flags |= COMPLEX;
-	else if ((!ft_strcmp(s, "--adaptive") && (info->flags & 15) == 0)
-		|| (!ft_strcmp(s, "--adaptive") && info->flags & ADAPTIVE))
+	else if (((!ft_strcmp(s, "--adaptive") && (info->flags & 15) == 0)
+			|| (!ft_strcmp(s, "--adaptive") && info->flags & ADAPTIVE))
+		&& PARSE_STRATEGY == true)
 		info->flags |= ADAPTIVE;
-	else if (!ft_strcmp(s, "--bench"))
+	else if (!ft_strcmp(s, "--bench")
+		&& PARSE_STRATEGY == true)
 		info->flags |= BENCH;
 	else
 		return (false);
