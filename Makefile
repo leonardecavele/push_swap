@@ -27,6 +27,7 @@ SRCS =\
    srcs/utils/libft/ft_isspace.c\
    srcs/utils/libft/ft_memset.c\
    srcs/utils/libft/ft_strcmp.c\
+   srcs/utils/libft/ft_approximate_sqrt.c\
    srcs/utils/linked_list/list_clear.c\
    srcs/utils/linked_list/list_pop.c\
    srcs/utils/linked_list/list_push.c\

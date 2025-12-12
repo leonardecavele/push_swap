@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:09:29 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/10 18:10:53 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 19:17:42 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ bool	ft_issign(int c);
 bool	ft_isspace(int c);
 int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memset(void *s, int c, size_t n);
+int		ft_approximate_sqrt(int value);
 
 #endif
