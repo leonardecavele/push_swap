@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:09:29 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/12 19:17:42 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/13 16:05:50 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_dprintf
 	int		current;
 }			t_dprintf;
 
+int		ft_approximate_sqrt(int value);
+int		ft_ceil(double value);
 int		ft_dprintf(int fd, const char *s, ...);
 long	ft_atol(const char *s);
 bool	ft_isdigit(int c);
@@ -33,6 +35,5 @@ bool	ft_issign(int c);
 bool	ft_isspace(int c);
 int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memset(void *s, int c, size_t n);
-int		ft_approximate_sqrt(int value);
 
 #endif

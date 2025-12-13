@@ -6,99 +6,45 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:01:27 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/12 20:42:11 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/13 17:01:15 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithms.h"
 #include "debug.h" // to remove
 
-//static void	target_value(t_stack *stack, int value, t_node **target, bool *dir)
-//{
-//	t_node	*current;
-//	int		target_index;
-//
-//	target_index = 0;
-//	current = stack->a;
-//	*target = NULL;
-//	while (current != stack->a || target_index == 0)
-//	{
-//		if ((long)current->value == value)
-//		{
-//			*target = current;
-//			break ;
-//		}
-//		current = current->next;
-//		target_index++;
-//	}
-//	if (stack->size_a - target_index > target_index)
-//		*dir = RIGHT;
-//	else
-//		*dir = LEFT;
-//}
-
-//static void	find_minmax(t_stack *stack, t_node **min_node, t_node **max_node)
-//{
-//	t_node	*current;
-//
-//	if (stack->size == 0)
-//		return ;
-//	current = stack->a;
-//	while (true)
-//	{
-//		if (*max_node == NULL || current->value > (*max_node)->value)
-//			*max_node = current;
-//		if (*min_node == NULL || current->value < (*min_node)->value)
-//			*min_node = current;
-//		current = current->next;
-//		if (current == stack->a)
-//			break;
-//	}
-//}
-
-
-static void	target_max(t_stack *stack, t_node **target, bool *direction)
+static void	target_max(t_node *root, int size, t_node **target, bool *direction)
 {
-	t_node	*current;
 	long	max;
-	int		target_index;
-	int		index;
+	int		stack_size;
 
-	max = LONG_MIN;
-	target_index = 0;
-	index = 0;
-	current = stack->b;
-	while (current != stack->b || index == 0)
+	max = INT_MIN;
+	stack_size = size;
+	while (stack_size--)
 	{
-		if ((long)current->value > max)
+		if ((long)root->value > max)
 		{
-			target_index = index;
-			max = current->value;
-			*target = current;
+			if (size - stack_size < size / 2)
+				*direction = RIGHT;
+			else
+				*direction = LEFT;
+			max = root->value;
+			*target = root;
 		}
-		current = current->next;
-		index++;
+		root = root->next;
 	}
-	if (stack->size_b - target_index > target_index)
-		*direction = RIGHT;
-	else
-		*direction = LEFT;
 }
 
-static int	find_min(t_stack *stack, int gt)
+static int	get_min_greater_than(t_node *root, int size, int gt)
 {
-	t_node	*current;
 	int		min;
 
 	min = INT_MAX;
-	current = stack->a;
-	while (true)
+	while (size--)
 	{
-		if (current->value < min && current->value > gt)
-			min = current->value;
-		current = current->next;
-		if (current == stack->a)
-			break;
+		if (root->value < min && root->value > gt)
+			min = root->value;
+		root = root->next;
 	}
 	return (min);
 }
@@ -106,89 +52,64 @@ static int	find_min(t_stack *stack, int gt)
 static void	next_bucket_range(t_stack *stack, int item_count, int *min, int *max)
 {
 	t_node	*current;
-	int		count;
-	int		last_min;
+	int		value;
 
 	if (stack->size == 0)
 		return ;
-	*min = find_min(stack, INT_MIN);
-	last_min = *min;
+	value = get_min_greater_than(stack->a, stack->size_a, INT_MIN);
+	*min = value;
 	current = stack->a;
-	count = 1;
-	while (count < item_count)
+	while (--item_count)
 	{
-		last_min = find_min(stack, last_min);
-		count++;
+		value = get_min_greater_than(stack->a, stack->size_a, value);
 		current = current->next;
 		if (current == stack->a)
 			break;
 	}
-	*max = last_min;
+	*max = value;
 }
 
-typedef struct	s_bucket_iterator
+static void	pushb_next_bucket(t_stack *stack, t_info *info, int item_per_bucket)
 {
-	int	index;
-}				t_bucket_iterator;
+	int		range_min;
+	int		range_max;
+	int		stack_size;
 
-typedef struct	s_buckets
+	next_bucket_range(stack, item_per_bucket, &range_min, &range_max);
+	stack_size = stack->size_a;
+	while (stack_size--)
+	{
+		if (stack->a->value >= range_min && stack->a->value <= range_max)
+			pb(stack, info);
+		else
+			ra(stack, info);
+	}
+}
+
+static void	pusha_max(t_stack *stack, t_info *info)
 {
-	t_bucket_iterator	iterator;
-	int					count;
-	int					item_per_bucket;
-}				t_buckets;
+	t_node	*max_node;
+	bool	direction;
+
+	target_max(stack->b, stack->size_b, &max_node, &direction);
+	while (stack->b != max_node)
+		if (direction == RIGHT)
+			rb(stack, info);
+		else if (direction == LEFT)
+			rrb(stack, info);
+	pa(stack, info);
+}
 
 extern void	medium(t_stack *stack, t_info *info)
 {
-	//t_node		*min_node;
-	t_node		*max_node;
-	t_buckets	buckets;
+	int		num_buckets;
+	int		item_per_bucket;
 
-	(void)info;
-	buckets = (t_buckets){0};
-	//min_node = NULL;
-	//max_node = NULL;
-	//find_minmax(stack, &min_node, &max_node);
-	
-	buckets.count = ft_approximate_sqrt(stack->size);
-	buckets.item_per_bucket = stack->size / buckets.count;
-	if (buckets.item_per_bucket * buckets.count < stack->size)
-		buckets.item_per_bucket++;
-	
-	int	index = 0;
-	while (index < buckets.count)
-	{
-		int range_min;
-		int range_max;
-		next_bucket_range(stack, buckets.item_per_bucket, &range_min, &range_max);
-		t_node *last = stack->a->previous;
-		while (true)
-		{
-			if (stack->a->value >= range_min && stack->a->value <= range_max)
-				pb(stack, info);
-			else
-				ra(stack, info);
-			if (stack->a == last || !stack->size_a)
-			{
-				if (stack->a->value >= range_min && stack->a->value <= range_max)
-					pb(stack, info);
-				else
-					ra(stack, info);
-				break ;
-			}
-		}
-		index++;
-	}
-	
+	num_buckets = ft_approximate_sqrt(stack->size);
+	item_per_bucket = ft_ceil((double)stack->size / num_buckets);
+	while (num_buckets--)
+		pushb_next_bucket(stack, info, item_per_bucket);
 	while (stack->size_b)
-	{
-		bool	direction;
-		target_max(stack, &max_node, &direction);
-		while (stack->b != max_node)
-			if (direction == RIGHT)
-				rb(stack, info);
-			else if (direction == LEFT)
-				rrb(stack, info);
-		pa(stack, info);
-	}
+		pusha_max(stack, info);
+	print_stack(stack);
 }
