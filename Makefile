@@ -32,6 +32,8 @@ SRCS =\
    srcs/utils/linked_list/list_clear.c\
    srcs/utils/linked_list/list_pop.c\
    srcs/utils/linked_list/list_push.c\
+   srcs/utils/linked_list/list_helpers.c\
+   srcs/utils/stack.c\
    srcs/debug.c
 
 BSRCS = main.c\

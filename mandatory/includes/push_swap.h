@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:44:16 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/11 16:41:39 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/13 17:59:21 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PUSH_SWAP_H
 
 # include "linked_list.h"
+
+# define LEFT	0
+# define RIGHT	1
 
 typedef enum e_flag
 {
