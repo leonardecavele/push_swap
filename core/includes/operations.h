@@ -14,7 +14,7 @@
 # define OPERATIONS_H
 
 # include <unistd.h>
-# include "push_swap.h"
+# include "core.h"
 # include "utils.h"
 # include "linked_list.h"
 

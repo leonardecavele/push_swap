@@ -13,7 +13,7 @@
 #ifndef BENCH_H
 # define BENCH_H
 
-# include "push_swap.h"
+# include "core.h"
 # include "operations.h"
 # include "utils.h"
 

@@ -13,7 +13,7 @@
 #ifndef DEBUG_H
 # define DEBUG_H
 
-# include "push_swap.h"
+# include "core.h"
 
 void	print_stack(t_stack *stack);
 

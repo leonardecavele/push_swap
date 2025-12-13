@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "core.h"
 #include "parse_input.h"
 
 #include "utils.h"

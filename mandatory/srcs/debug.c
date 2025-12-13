@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "core.h"
 #include <stdio.h>
 
 void	print_stack(t_stack *stack)

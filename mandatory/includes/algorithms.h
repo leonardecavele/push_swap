@@ -13,7 +13,7 @@
 #ifndef ALGORITHMS_H
 # define ALGORITHMS_H
 
-# include "push_swap.h"
+# include "core.h"
 # include "operations.h"
 # include <limits.h>
 

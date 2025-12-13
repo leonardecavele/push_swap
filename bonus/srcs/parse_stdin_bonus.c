@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h" // maybe some of them are useless
+#include "core.h" // maybe some of them are useless
 #include "operations.h"
 #include "checker_bonus.h"
 #include "utils.h"

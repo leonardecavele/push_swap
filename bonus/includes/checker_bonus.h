@@ -14,7 +14,7 @@
 # define CHECKER_BONUS_H
 
 # include <unistd.h>
-# include "push_swap.h"
+# include "core.h"
 
 typedef void (*t_operation_function)(t_stack *, t_info *);
 
