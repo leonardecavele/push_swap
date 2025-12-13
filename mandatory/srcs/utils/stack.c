@@ -6,7 +6,7 @@
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 17:50:38 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/13 18:00:03 by nlallema         ###   ########.fr       */
+/*   Updated: 2025/12/13 19:30:07 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ extern void	target_max(t_node *root, int size, t_node **target, bool *direction)
 	{
 		if ((long)root->value > max)
 		{
-			if (size - stack_size < size / 2)
+			if (size - stack_size <= size / 2)
 				*direction = RIGHT;
 			else
 				*direction = LEFT;
