@@ -28,7 +28,7 @@ static bool	is_sorted(t_stack *stack)
 		return (false);
 	last_value = INT_MIN;
 	start = stack->a;
-	while (true)
+	while (stack->a)
 	{
 		if (last_value > stack->a->value)
 			return (false);
@@ -48,7 +48,7 @@ static void run_instructions(t_stack *stack, t_info *info, t_node *instructions)
 	};
 
 	start = instructions;
-	while (true)
+	while (instructions)
 	{
 		operations[instructions->value](stack, info);
 		instructions = instructions->next;
