@@ -18,7 +18,8 @@ MANDATORY_SRCS =\
 		   push_swap.c\
 		   bench.c\
 		   debug.c\
-		   algorithms/simple.c\
+		   algorithms/simple/simple.c\
+		   algorithms/simple/target.c\
 		   algorithms/medium.c\
 		   algorithms/complex.c\
 
@@ -31,6 +32,7 @@ CORE_SRCS =\
 	   operations/reverse_rotate.c\
 	   operations/rotate.c\
 	   operations/swap.c\
+	   utils/libft/ft_abs.c\
 	   utils/libft/ft_atol.c\
 	   utils/libft/ft_dprintf.c\
 	   utils/libft/ft_isdigit.c\
@@ -38,6 +40,7 @@ CORE_SRCS =\
 	   utils/libft/ft_isspace.c\
 	   utils/libft/ft_memset.c\
 	   utils/libft/ft_strcmp.c\
+	   utils/libft/max.c\
 	   utils/libft/get_next_line.c\
 	   utils/linked_list/list_clear.c\
 	   utils/linked_list/list_pop.c\
