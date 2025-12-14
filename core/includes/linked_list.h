@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 11:07:54 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/11 14:10:09 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/14 12:15:31 by ldecavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_node
 	struct s_node	*previous;
 	struct s_node	*next;
 	int				value;
+	int				index;
 }					t_node;
 
 void	list_push_front(t_node *node, t_node **root);

@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 13:06:22 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/13 20:46:32 by ldecavel         ###   ########.fr       */
+/*   Updated: 2025/12/14 16:45:27 by ldecavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,31 @@
 #include "algorithms.h"
 
 #include "debug.h" // to remove
+
+static void	get_indexes(t_stack *stack)
+{
+	t_node	*i;
+	t_node	*j;
+	int		n;
+	int		k;
+
+	if (!stack || !stack->a)
+		return ;
+	n = stack->size_a;
+	i = stack->a;
+	while (n--)
+	{
+		j = stack->a;
+		k = stack->size_a;
+		while (k--)
+		{
+			if (j->value < i->value)
+				i->index++;
+			j = j->next;
+		}
+		i = i->next;
+	}
+}
 
 static void	adapt_complexity(t_info *info)
 {
@@ -66,6 +91,7 @@ int	main(int ac, char **av)
 	parse_input(ac, av, &info, &stack);
 	if (info.flags & (BENCH | ADAPTIVE))
 		info.disorder = compute_disorder(&stack);
+	get_indexes(&stack);
 	if (info.flags & ADAPTIVE)
 		adapt_complexity(&info);
 	if (info.flags & SIMPLE)
@@ -76,6 +102,7 @@ int	main(int ac, char **av)
 		complex(&stack, &info);
 	if (info.flags & BENCH)
 		bench(info);
+	//print_stack(&stack);
 	list_clear(&stack.a);
 	list_clear(&stack.b);
 	return (0);
