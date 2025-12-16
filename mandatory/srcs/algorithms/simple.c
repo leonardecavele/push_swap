@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:49:17 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/16 13:49:17 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/16 14:07:29 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ extern void	simple(t_stack *stack, t_info *info)
 	{
 		target_min(stack, &target, &direction);
 		while (stack->a != target)
+		{
 			if (direction == RIGHT)
 				ra(stack, info);
 			else if (direction == LEFT)
 				rra(stack, info);
+		}
 		pb(stack, info);
 	}
 	while (stack->b)

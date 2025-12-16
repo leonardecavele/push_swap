@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 13:06:22 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/14 22:49:44 by ldecavel         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:07:06 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int	main(int ac, char **av)
 		complex(&stack, &info);
 	if (info.flags & BENCH)
 		bench(info);
-	//print_stack(&stack);
 	list_clear(&stack.a);
 	list_clear(&stack.b);
 	return (0);

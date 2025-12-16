@@ -6,7 +6,7 @@
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:58:34 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/16 14:00:46 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/16 14:07:43 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,3 @@ extern int	target_first_in_range(t_stack *stack, int min, int max)
 	}
 	return (distance);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:17:19 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/13 20:35:20 by ldecavel         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:09:32 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "parse_input.h"
 #include "parse_stdin_bonus.h"
 #include "utils.h"
-
 #include <limits.h> // vraiment on doit ranger
 
 static bool	is_sorted(t_stack *stack)
@@ -40,7 +39,7 @@ static bool	is_sorted(t_stack *stack)
 	return (true);
 }
 
-static void run_instructions(t_stack *stack, t_info *info, t_node *instructions)
+static void	run_instructions(t_stack *stack, t_info *info, t_node *instructions)
 {
 	t_node						*start;
 	static t_operation_function	operations[] = {
