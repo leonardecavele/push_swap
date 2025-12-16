@@ -46,7 +46,7 @@ CORE_SRCS =\
 	   utils/linked_list/list_clear.c\
 	   utils/linked_list/list_pop.c\
 	   utils/linked_list/list_push.c\
-	   utils/libft/ft_approximate_sqrt.c\
+	   utils/libft/approximate_sqrt.c\
 	   utils/libft/ft_ceil.c\
 	   parse_input.c\
 
