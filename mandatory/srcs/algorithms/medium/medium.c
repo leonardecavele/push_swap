@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:01:27 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/16 13:58:51 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/16 14:12:53 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ extern void	medium(t_stack *stack, t_info *info)
 	int		num_buckets;
 	int		bucket_size;
 
-	num_buckets = ft_approximate_sqrt(stack->size);
+	num_buckets = approximate_sqrt(stack->size);
 	bucket_size = ft_ceil((double)stack->size / num_buckets);
 	while (num_buckets--)
 		pushb_next_bucket(stack, info, bucket_size);

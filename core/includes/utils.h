@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:09:29 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/16 13:50:50 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/16 14:12:29 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_gnl
 }			t_gnl;
 
 bool	get_next_line(int fd, char **s);
-int		ft_approximate_sqrt(int value);
+int		approximate_sqrt(int value);
 int		ft_ceil(double value);
 int		ft_dprintf(int fd, const char *s, ...);
 long	ft_atol(const char *s);
