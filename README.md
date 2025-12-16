@@ -57,7 +57,8 @@ argument (upper bounds) for time and space within the Push_swap model.
 
 The links down below helped us to get **inspiration** on algorithms design, excepted 
 Chatgpt that helped on **debugging**, understanding **time complexity**, markdown **syntax** and to
-create **python scripts** for testing. 
+create **python scripts** for testing. Besides theses links, most of the inspiration on designs actually
+comes from discussions with other **42 students**.
 
 [Chatgpt](https://chatgpt.com)  
 [Youtube : Bitonic Sort](https://www.youtube.com/watch?v=hC00IfY5tWA)  
@@ -71,10 +72,17 @@ create **python scripts** for testing.
 ### CONTRIBUTIONS
 
 [nlallema](https://github.com/parad0xe) :  
-  * todo
-
+  * Utils  
+  * Operations  
+  * Linked list  
+  * Bench  
+  * Medium algorithm  
+  * Push_swap  
+  
 [ldecavel](https://github.com/leonardecavele) :  
-  * todo
-
-The repository must clearly indicate both learners’ contributions in the README.md
-file.
+  * Utils  
+  * Parsing  
+  * Makefile  
+  * Checker  
+  * Simple algorithm  
+  * Push_swap  
