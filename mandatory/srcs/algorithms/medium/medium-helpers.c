@@ -1,17 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   medium-helpers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/13 17:50:38 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/13 19:30:07 by nlallema         ###   ########.fr       */
+/*   Created: 2025/12/16 13:58:34 by nlallema          #+#    #+#             */
+/*   Updated: 2025/12/16 14:00:46 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "operations.h"
+#include "linked_list.h"
+
+extern int	list_get_min_greater_than(t_node *root, int size, int gt)
+{
+	int		min;
+
+	min = INT_MAX;
+	while (size--)
+	{
+		if (root->value < min && root->value > gt)
+			min = root->value;
+		root = root->next;
+	}
+	return (min);
+}
 
 extern void	target_max(t_node *root, int size, t_node **target, bool *direction)
 {
@@ -50,3 +65,33 @@ extern void	pusha_max(t_stack *stack, t_info *info)
 	}
 	pa(stack, info);
 }
+
+extern int	target_first_in_range(t_stack *stack, int min, int max)
+{
+	t_node	*root;
+	int		distance;
+	int		stack_size;
+
+	stack_size = stack->size_a;
+	distance = INT_MAX;
+	root = stack->a;
+	while (root && stack_size-- >= 0)
+	{
+		if (root->value >= min && root->value <= max)
+		{
+			if (stack_size < stack->size_a - stack_size)
+			{
+				if (ft_abs(distance) > stack_size)
+					distance = -stack_size - 1;
+			}
+			else
+			{
+				if (ft_abs(distance) > stack->size_a - stack_size)
+					distance = stack->size_a - stack_size - 1;
+			}
+		}
+		root = root->next;
+	}
+	return (distance);
+}
+

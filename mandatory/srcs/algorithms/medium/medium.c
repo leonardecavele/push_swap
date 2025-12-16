@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:01:27 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/16 13:31:05 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/16 13:58:51 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,6 @@ static void	bucket_range(t_stack *stack, int bucket_size, int *min, int *max)
 			break ;
 	}
 	*max = value;
-}
-
-static int	target_first_in_range(t_stack *stack, int min, int max)
-{
-	t_node	*root;
-	int		distance;
-	int		stack_size;
-
-	stack_size = stack->size_a;
-	distance = INT_MAX;
-	root = stack->a;
-	while (root && stack_size-- >= 0)
-	{
-		if (root->value >= min && root->value <= max)
-		{
-			if (stack_size < stack->size_a - stack_size)
-			{
-				if (ft_abs(distance) > stack_size)
-					distance = -stack_size - 1;
-			}
-			else
-			{
-				if (ft_abs(distance) > stack->size_a - stack_size)
-					distance = stack->size_a - stack_size - 1;
-			}
-		}
-		root = root->next;
-	}
-	return (distance);
 }
 
 static void	pushb_next_bucket(t_stack *stack, t_info *info, int bucket_size)
