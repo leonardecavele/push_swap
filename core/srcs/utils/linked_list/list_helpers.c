@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   list_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 13:44:34 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/16 13:44:34 by nlallema         ###   ########lyon.fr   */
+/*   Created: 2025/12/13 17:55:03 by nlallema          #+#    #+#             */
+/*   Updated: 2025/12/13 18:02:45 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_abs(int x)
+#include "linked_list.h"
+
+extern int	list_get_min_greater_than(t_node *root, int size, int gt)
 {
-	if (x < 0)
-		return (-x);
-	return (x);
+	int		min;
+
+	min = INT_MAX;
+	while (size--)
+	{
+		if (root->value < min && root->value > gt)
+			min = root->value;
+		root = root->next;
+	}
+	return (min);
 }

@@ -45,6 +45,10 @@ CORE_SRCS =\
 	   utils/linked_list/list_clear.c\
 	   utils/linked_list/list_pop.c\
 	   utils/linked_list/list_push.c\
+	   utils/linked_list/list_helpers.c\
+	   utils/libft/ft_approximate_sqrt.c\
+	   utils/libft/ft_ceil.c\
+	   utils/stack.c\
 	   parse_input.c\
 
 OBJS = $(MANDATORY_SRCS:%.c=$(BUILD)/%.o)

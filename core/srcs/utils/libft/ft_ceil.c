@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_ceil.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 13:44:34 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/16 13:44:34 by nlallema         ###   ########lyon.fr   */
+/*   Created: 2025/12/13 16:03:11 by nlallema          #+#    #+#             */
+/*   Updated: 2025/12/13 16:05:12 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_abs(int x)
+extern int	ft_ceil(double value)
 {
-	if (x < 0)
-		return (-x);
-	return (x);
+	if ((int)value - value != 0.)
+		return (value + 1);
+	return (value);
 }

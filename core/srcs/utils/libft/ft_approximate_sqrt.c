@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_approximate_sqrt.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 13:44:34 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/16 13:44:34 by nlallema         ###   ########lyon.fr   */
+/*   Created: 2025/12/12 19:16:54 by nlallema          #+#    #+#             */
+/*   Updated: 2025/12/12 19:17:16 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	ft_abs(int x)
+extern int	ft_approximate_sqrt(int value)
 {
-	if (x < 0)
-		return (-x);
-	return (x);
+	long long	n;
+
+	n = 1;
+	while (n * n < value)
+		n = n << 1;
+	while (n * n > value)
+		n--;
+	return (n);
 }

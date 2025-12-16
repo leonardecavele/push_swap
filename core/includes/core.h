@@ -6,7 +6,7 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:44:16 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/13 21:18:44 by ldecavel         ###   ########.fr       */
+/*   Updated: 2025/12/16 13:43:49 by nlallema         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define CORE_H
 
 # include "linked_list.h"
+
+# define LEFT	0
+# define RIGHT	1
 
 typedef enum e_flag
 {
