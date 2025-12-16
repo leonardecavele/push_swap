@@ -18,7 +18,7 @@ static void	handle_error(int errcode, t_stack *stack, t_node **table)
 
 	if (errcode == ERR_AC)
 		exit(errcode);
-	ft_dprintf(2, "Error\n");
+	write(2, "Error\n", 6);
 	list_clear(&stack->a);
 	i = -1;
 	while (++i < HASH_SIZE)

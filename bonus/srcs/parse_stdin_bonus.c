@@ -14,7 +14,7 @@
 
 static void	handle_error(int errcode, t_stack *stack, t_node **instructions)
 {
-	ft_dprintf(2, "Error\n");
+	write(2, "Error\n", 6);
 	list_clear(&stack->a);
 	list_clear(instructions);
 	exit(errcode);
