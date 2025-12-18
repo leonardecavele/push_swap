@@ -62,8 +62,8 @@ argument (upper bounds) for time and space within the Push_swap model.
 
 The links down below helped us to get **inspiration** on algorithms design, excepted 
 Chatgpt that helped on **debugging**, understanding **time complexity**, markdown **syntax** and to
-create **python scripts** for testing. Besides theses links, most of the inspiration on designs actually
-comes from discussions with other **42 students**.
+create **python scripts** for testing. Besides theses links, most of the inspiration on algorithm 
+designs actually comes from discussions with other **42 students**.
 
 [Chatgpt](https://chatgpt.com)  
 [Youtube : Bitonic Sort](https://www.youtube.com/watch?v=hC00IfY5tWA)  
