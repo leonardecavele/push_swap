@@ -12,51 +12,48 @@
 
 #include "algorithms.h"
 
-static void	target_min(t_stack *stack, t_node **target, bool *direction)
+static void	push_to_a(t_stack *stack, t_info *info, int bit)
 {
-	t_node	*current;
-	long	min;
-	int		target_index;
-	int		index;
+	int	stack_size;
 
-	min = LONG_MAX;
-	target_index = 0;
-	index = 0;
-	current = stack->a;
-	while (current != stack->a || index == 0)
+	stack_size = stack->size_b;
+	while (stack_size-- && stack->size_b && stack->size_a)
 	{
-		if ((long)current->value < min)
-		{
-			target_index = index;
-			min = current->value;
-			*target = current;
-		}
-		current = current->next;
-		index++;
+		if (stack->b->index & bit)
+			pa(stack, info);
+		else
+			rb(stack, info);
 	}
-	if (stack->size_a - target_index > target_index)
-		*direction = RIGHT;
-	else
-		*direction = LEFT;
+}
+
+static void	push_to_b(t_stack *stack, t_info *info, int bit)
+{
+	int	stack_size;
+
+	stack_size = stack->size_a;
+	while (stack_size-- && stack->size_a)
+	{
+		if (!(stack->a->index & bit))
+			pb(stack, info);
+		else
+			ra(stack, info);
+	}
 }
 
 extern void	complex(t_stack *stack, t_info *info)
 {
-	t_node	*target;
-	bool	direction;
+	int	bit;
+	int	tmp;
 
-	while (stack->size_a)
+	tmp = 0;
+	bit = 0x1;
+	while (bit && stack->size_a && tmp != stack->size_a)
 	{
-		target_min(stack, &target, &direction);
-		while (stack->a != target)
-		{
-			if (direction == RIGHT)
-				ra(stack, info);
-			else if (direction == LEFT)
-				rra(stack, info);
-		}
-		pb(stack, info);
+		push_to_b(stack, info, bit);
+		bit <<= 1;
+		tmp = stack->size_a;
+		push_to_a(stack, info, bit);
 	}
-	while (stack->b)
+	while (stack->size_b)
 		pa(stack, info);
 }
