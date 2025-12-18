@@ -52,6 +52,18 @@ to pick the most appropriate algorithm. If the disorder score is below 20, it us
 operations to prepare its computing
 
 
+#### Simple
+
+TODO
+
+#### Medium
+
+TODO
+
+#### Complex
+
+TODO
+
 A detailed explanation and justification of the algorithms selected for this project
 must also be included.
 
