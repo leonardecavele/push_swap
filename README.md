@@ -66,7 +66,8 @@ fix next, and a lightweight chunk-based phase. During this phase, elements are i
 reduce unnecessary rotations and keeps misplaced values grouped together.  
 
 This algorithm's complexity is **O(n²)** in push_swap operations, because in the worst case it may require to do up to n rotations on each element
-to push then back from b to a. Thus, the total number of operations in the worst case is n x n rotations.
+to push then back from b to a. Thus, the total number of operations in the worst case is n x n rotations. Space complexity is **O(n)**, which corresponds
+to the memory required to store the stacks and the associated indexes.
 
 #### Medium
 
@@ -84,7 +85,8 @@ each step, gradually building the sorted order.
 This algorithm's complexity is **O(n log n)** in push_swap operations, as it performs a linear number of operations per iteration,
 with a logarithmic number of iterations. The logarithmic factor comes from the number of bits required to represent the indexed values.
 Since the indexes range from 0 to n − 1, their binary representation has at most log2(n) bits. The algorithm processes one bit per pass,
-which results in a logarithmic number of iterations.
+which results in a logarithmic number of iterations. Space complexity is **O(n)**, which corresponds to the memory required to store the
+stacks and the associated indexes.
 
 ### RESSOURCES
 
