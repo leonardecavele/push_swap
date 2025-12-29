@@ -71,7 +71,11 @@ to the memory required to store the stacks and the associated indexes.
 
 #### Medium
 
-TODO
+If the disorder score is between 0.20 (included) and 0.50 (excluded), the program uses the medium algorithm in order to minimize the number of operations on moderately sorted inputs. It works well on uniformly distributed inputs because the sort is divided into buckets by range, which results in a pre-sorted input regardless of the initial value positions.
+
+The algorithm works on **bucket sort** system model. The numbers are dispatched into multiple __buckets__ defined by the square root of the number of elements. Each bucket has a range of values it can contain, and the numbers are pushed into buckets in ascending range order. When all numbers are added to their respective buckets, a search for the maximum value is performed in descending order of buckets (high range -> low range), resulting a sorted input.
+
+The algorithm's complexity is **O(n√n)** in push_swap operations due to the division into buckets. **N** elements are dispatched into their respective buckets. During the final sorting phase, the search for the maximum value is limited to a single bucket, since the value range guarantees its location. Space complexity is **O(n)**, which corresponds to the memory required to store the stacks and the associated indexes.
 
 #### Complex
 If the disorder score is above or equal to 0.50, the program uses the **complex algorithm** in order to minimize the number of operations on highly
