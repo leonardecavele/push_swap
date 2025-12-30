@@ -6,7 +6,7 @@
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:23:46 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/11 16:39:02 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/30 16:40:36 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ extern void	sa(t_stack *stack, t_info *info)
 		tmp = stack->a->value;
 		stack->a->value = stack->a->next->value;
 		stack->a->next->value = tmp;
+		tmp = stack->a->index;
+		stack->a->index = stack->a->next->index;
+		stack->a->next->index = tmp;
 	}
 }
 
@@ -39,6 +42,9 @@ extern void	sb(t_stack *stack, t_info *info)
 		tmp = stack->b->value;
 		stack->b->value = stack->b->next->value;
 		stack->b->next->value = tmp;
+		tmp = stack->b->index;
+		stack->b->index = stack->b->next->index;
+		stack->b->next->index = tmp;
 	}
 }
 
@@ -54,11 +60,17 @@ extern void	ss(t_stack *stack, t_info *info)
 		tmp = stack->a->value;
 		stack->a->value = stack->a->next->value;
 		stack->a->next->value = tmp;
+		tmp = stack->a->index;
+		stack->a->index = stack->a->next->index;
+		stack->a->next->index = tmp;
 	}
 	if (stack->b != NULL && stack->b != stack->b->next)
 	{
 		tmp = stack->b->value;
 		stack->b->value = stack->b->next->value;
 		stack->b->next->value = tmp;
+		tmp = stack->b->index;
+		stack->b->index = stack->b->next->index;
+		stack->b->next->index = tmp;
 	}
 }
