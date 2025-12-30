@@ -6,90 +6,95 @@
 /*   By: nlallema <nlallema@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:58:34 by nlallema          #+#    #+#             */
-/*   Updated: 2025/12/16 14:39:57 by nlallema         ###   ########lyon.fr   */
+/*   Updated: 2025/12/30 22:22:11 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithms.h"
 
-extern int	list_get_min_greater_than(t_node *root, int size, int gt)
+static int	target_max(t_node *root, int sz)
 {
-	int		min;
+	int	max;
+	int	index;
+	int	distance;
 
-	min = INT_MAX;
-	while (size--)
-	{
-		if (root->value < min && root->value > gt)
-			min = root->value;
-		root = root->next;
-	}
-	return (min);
-}
-
-extern void	target_max(t_node *root, int size, t_node **target, bool *direction)
-{
-	long	max;
-	int		stack_size;
-
+	if (!sz)
+		return (0);
+	index = -1;
 	max = INT_MIN;
-	stack_size = size;
-	while (stack_size--)
+	while (++index < sz)
 	{
-		if ((long)root->value > max)
+		if (root->value > max)
 		{
-			if (size - stack_size <= size / 2)
-				*direction = RIGHT;
+			if (index <= sz / 2)
+				distance = index;
 			else
-				*direction = LEFT;
+				distance = -(sz - index);
 			max = root->value;
-			*target = root;
-		}
-		root = root->next;
-	}
-}
-
-extern void	pusha_max(t_stack *stack, t_info *info)
-{
-	t_node	*max_node;
-	bool	direction;
-
-	max_node = NULL;
-	target_max(stack->b, stack->size_b, &max_node, &direction);
-	while (max_node && stack->b != max_node)
-	{
-		if (direction == RIGHT)
-			rb(stack, info);
-		else if (direction == LEFT)
-			rrb(stack, info);
-	}
-	pa(stack, info);
-}
-
-extern int	target_first_in_range(t_stack *stack, int min, int max)
-{
-	t_node	*root;
-	int		distance;
-	int		stack_size;
-
-	stack_size = stack->size_a;
-	distance = INT_MAX;
-	root = stack->a;
-	while (root && stack_size-- >= 0)
-	{
-		if (root->value >= min && root->value <= max)
-		{
-			if (stack_size < stack->size_a - stack_size)
-			{
-				if (ft_abs(distance) > stack_size)
-					distance = -stack_size - 1;
-			}
-			else
-			{
-				if (ft_abs(distance) > stack->size_a - stack_size)
-					distance = stack->size_a - stack_size - 1;
-			}
 		}
 		root = root->next;
 	}
 	return (distance);
+}
+
+extern int	target_bucket(t_node *root, int sz, int bi, int nb)
+{
+	int	index;
+	int	distance;
+
+	index = -1;
+	distance = INT_MAX;
+	while (++index < sz)
+	{
+		if (root->index / nb == bi)
+		{
+			if (index <= sz / 2 && distance > index)
+				distance = index;
+			else if (index > sz / 2 && ft_abs(distance) > sz - index)
+				distance = -(sz - index);
+		}
+		root = root->next;
+	}
+	return (distance);
+}
+
+extern void	pusha_max(t_stack *stack, t_info *info)
+{
+	int		rt;
+
+	rt = target_max(stack->b, stack->size_b);
+	while (rt)
+	{
+		if (rt > 0)
+		{
+			if (rt == 1 && stack->b->index < stack->b->next->index)
+			{
+				sb(stack, info);
+				break ;
+			}
+			rb(stack, info);
+			rt--;
+		}
+		else
+		{
+			rrb(stack, info);
+			rt++;
+		}
+	}
+	pa(stack, info);
+}
+
+extern t_node	*get_node_at(t_node *root, int distance)
+{
+	while (distance > 0)
+	{
+		root = root->next;
+		distance--;
+	}
+	while (distance < 0)
+	{
+		root = root->previous;
+		distance++;
+	}
+	return (root);
 }
