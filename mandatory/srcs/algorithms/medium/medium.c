@@ -6,18 +6,24 @@
 /*   By: ldecavel <ldecavel@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:01:27 by ldecavel          #+#    #+#             */
-/*   Updated: 2025/12/30 22:26:06 by nlallema         ###   ########.fr       */
+/*   Updated: 2025/12/31 01:43:59 by nlallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithms.h"
 
-static void	apply_rot_step(t_stack *stack, t_info *info, int bi, int nb, int rt)
+static void	apply_rot_step(t_stack *stack, t_info *info, int bi, int nb)
 {
 	t_node	*target;
+	int		rt;
 
+	rt = target_bucket(stack->a, stack->size_a, bi, nb);
 	target = get_node_at(stack->a, rt);
-	if (stack->size_b > 1 && target->index > stack->b->index \
+	if (rt == 1 && stack->size_b > 1 && target->index > stack->b->index \
+&& stack->b->index < stack->b->next->index \
+&& stack->b->next->index / nb == bi)
+		ss(stack, info);
+	else if (stack->size_b > 1 && target->index > stack->b->index \
 && stack->b->index < stack->b->next->index \
 && stack->b->next->index / nb == bi)
 		rr(stack, info);
@@ -38,8 +44,8 @@ static void	pushb_bucket(t_stack *stack, t_info *info, int bi, int nb)
 		rt = target_bucket(stack->a, stack->size_a, bi, nb);
 		if (rt == INT_MAX)
 			break ;
-		else if (rt > 0)
-			apply_rot_step(stack, info, bi, nb, rt);
+		if (rt > 0)
+			apply_rot_step(stack, info, bi, nb);
 		else if (rt < 0)
 			rra(stack, info);
 		else
