@@ -103,9 +103,9 @@ In this phase, we will create all the buckets one by one, from lowest to highest
 in the worst case the complexity is represented by:
 
 ```txt
-        n       n²
-w · n = ― · n = ― = O(n²)
-        k       k
+        n       n²    n²
+w · n = ― · n = ― = ―――――― = n · ɑ · √n = O(n · √n)
+        k       k   √n · ɑ
 ```
 
 ###### Phase 2 - selection sort [stack B -> stack A]
@@ -125,12 +125,8 @@ w · k² = ― · k² = n · k = O(n · √n)
 ###### Total operations cost
 
 ```txt
-phase 1 + phase 2 = O(n²) + O(n · √n) = O(n²)
+phase 1 + phase 2 = O(n · √n) + O(n · √n) = O(n · √n)
 ```
-
-The class complexity of this implementation is **O(n²)** due to the push and rotations operations used for create all the buckets, but in standard implementation based on array and hashmap data structure, the resulting class complexity is:
-
-`O(n) + O(n · √n) = O(n · √n)`
 
 ###### Total space cost
 
