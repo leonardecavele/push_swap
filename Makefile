@@ -35,7 +35,6 @@ CORE_SRCS =\
 	   utils/approximate_sqrt.c\
 	   utils/ft_abs.c\
 	   utils/ft_atol.c\
-	   utils/ft_ceil.c\
 	   utils/ft_dprintf.c\
 	   utils/ft_isdigit.c\
 	   utils/ft_issign.c\

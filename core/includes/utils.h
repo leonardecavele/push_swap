@@ -50,7 +50,6 @@ typedef struct s_gnl
 
 bool	get_next_line(int fd, char **s);
 int		approximate_sqrt(int value);
-int		ft_ceil(double value);
 int		ft_dprintf(int fd, const char *s, ...);
 long	ft_atol(const char *s);
 bool	ft_isdigit(int c);
