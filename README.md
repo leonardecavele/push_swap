@@ -38,8 +38,7 @@ To use it, run the following command :
 
 The **_checker_** program takes string of **integers** as an argument, then reads the standard input for any
 push_swap operations to execute, and checks if the list is sorted. It prints `Error` on the standard error output
-if it encounters any error. To use it, run the following command :
-To use the checker, run the following command :
+if it encounters any error. To use the checker, run the following command :
 ```bash
 ./checker <numbers...>
 #example: ./checker 42 1 2 3
